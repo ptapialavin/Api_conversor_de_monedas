@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Conversor de Monedas CLP</title>
+  <meta name="description" content="Convierte pesos chilenos a dólar o euro con el valor del día y revisa el historial de los últimos 10 días.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div class="contenedor-principal">
+
+    <header class="encabezado">
+      <span class="insignia" aria-hidden="true">$</span>
+      <div class="encabezado-textos">
+        <h1>Conversor de Monedas</h1>
+        <p class="subtitulo">Pesos chilenos (CLP) a dólar o euro, con el valor oficial del día</p>
+      </div>
+    </header>
+
+    <section class="tarjeta-formulario" aria-label="Formulario de conversión">
+      <div class="campo">
+        <label for="monto-pesos">Monto en pesos chilenos</label>
+        <div class="input-con-prefijo">
+          <span class="prefijo" aria-hidden="true">CLP</span>
+          <input type="number" id="monto-pesos" placeholder="0" min="0" inputmode="decimal">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="tipo-moneda">Moneda a convertir</label>
+        <div class="select-envoltura">
+          <select id="tipo-moneda">
+            <option value="" disabled selected>Seleccione una moneda</option>
+            <option value="dolar">Dólar (USD)</option>
+            <option value="euro">Euro (EUR)</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="boton-buscar" type="button">
+        <span class="texto-boton">Convertir</span>
+      </button>
+
+      <div id="resultado-conversion" class="texto-resultado" role="status" aria-live="polite"></div>
+      <div id="mensaje-error" class="texto-error" role="alert"></div>
+    </section>
+
+    <section class="contenedor-grafico" aria-label="Historial de los últimos 10 días">
+      <div class="grafico-encabezado">
+        <h2>Historial · últimos 10 días</h2>
+        <span id="grafico-subtitulo" class="grafico-subtitulo">Selecciona una moneda y consulta para ver el gráfico</span>
+      </div>
+      <div class="grafico-lienzo-envoltura">
+        <canvas id="grafico-historial"></canvas>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
